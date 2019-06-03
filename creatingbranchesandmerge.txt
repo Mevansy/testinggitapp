@@ -1,0 +1,76 @@
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ dir
+app.js  dir1  dir2  index.html  log.txt  newfile.txt  secondfile.txt
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git branch loginfeats
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git commit -m "added app2, ignoring app1 via .gitignore"
+[master b7b84a9] added app2, ignoring app1 via .gitignore
+ 2 files changed, 3 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 dir2/app2.js
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git checkout login
+error: pathspec 'login' did not match any file(s) known to git
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git checkout loginfeats
+Switched to branch 'loginfeats'
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (loginfeats)
+$ echo "login webpage" > login.html
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (loginfeats)
+$ code index.html
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (loginfeats)
+$ git add .
+warning: LF will be replaced by CRLF in dir1/app1.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in login.html.
+The file will have its original line endings in your working directory
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (loginfeats)
+$ git commit -m "login form added"
+[loginfeats 392ba5e] login form added
+ 4 files changed, 8 insertions(+)
+ create mode 100644 dir1/app1.js
+ create mode 100644 log.txt
+ create mode 100644 login.html
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (loginfeats)
+$ git checkout master
+Switched to branch 'master'
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git checkout loginfeats
+Switched to branch 'loginfeats'
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (loginfeats)
+$ git checkout master
+Switched to branch 'master'
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git merge login
+merge: login - not something we can merge
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ git merge loginfeats
+hint: Waiting for your editor to close the file...
+Merge made by the 'recursive' strategy.
+ dir1/app1.js | 1 +
+ index.html   | 1 +
+ log.txt      | 5 +++++
+ login.html   | 1 +
+ 4 files changed, 8 insertions(+)
+ create mode 100644 dir1/app1.js
+ create mode 100644 log.txt
+ create mode 100644 login.html
+
+mte92@MevansPC MINGW64 /e/Codeland/gittest/test1 (master)
+$ dir
+app.js  dir2        log.txt     newfile.txt
+dir1    index.html  login.html  secondfile.txt
